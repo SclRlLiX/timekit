@@ -1,0 +1,58 @@
+@import 'tailwindcss';
+
+@theme {
+	--font-sans: 'Google Sans', sans-serif;
+	--font-mono: 'JetBrains Mono', monospace;
+
+	--text-h1: 1.75rem;
+
+}
+
+:root {
+
+	--color-main-bg: #f4f5f7;
+	--color-main-text: #1a1b22;
+	--color-surface: #ffffff;
+	--color-surface-raised: #eaecf0;
+	--color-muted: #7c8191;
+
+	--color-accent: #2563eb; /* blue-600 — buttons, links, highlights */
+	--color-accent-hover: #1d4ed8; /* blue-700 — hover state */
+	--color-accent-subtle: #eff6ff; /* blue-50  — tinted backgrounds, badges */
+	--color-accent-text: #ffffff; /* text on top of accent-colored elements */
+}
+
+.dark {
+	--color-main-bg: #16171d;
+	--color-main-text: #e2e4e9;
+	--color-surface: #1e2028;
+	--color-surface-raised: #262830;
+	--color-muted: #7c8191;
+
+	--color-accent: #3b82f6; /* blue-500 — slightly lighter for dark bg contrast */
+	--color-accent-hover: #2563eb; /* blue-600 — hover drops back to the light value */
+	--color-accent-subtle: #1e2a45; /* dark tinted blue — for badges, highlights */
+	--color-accent-text: #ffffff;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+
+	*, ::before, ::after {
+		@apply transition-colors duration-300 ease-in-out;
+	}
+
+	body {
+		font-family: var(--font-sans);
+		background-color: var(--color-main-bg);
+		color: var(--color-main-text);
+	}
+
+	h1 {
+		font-size: 1.8em;
+		font-weight: bold;
+		line-height: 1.2;
+		padding-bottom: 1.25rem;
+	}
+}
