@@ -5,7 +5,6 @@
 	import { resolve } from '$app/paths';
 	import { page } from '$app/state';
 	import { scale } from 'svelte/transition';
-	import { base } from '$app/paths';
 
 	const resolvedHomePath = resolve('/');
 	const resolvedWorkPath = resolve('/work');
