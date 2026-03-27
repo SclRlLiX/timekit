@@ -42,4 +42,27 @@
 		-webkit-appearance: none;
 		margin: 0;
 	}
+
+	/* 2. Target the main inner wrapper */
+	input[type='time']::-webkit-datetime-edit {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		padding: 0;
+	}
+
+	/* 3. Target the specific Safari text fields wrapper */
+	input[type='time']::-webkit-datetime-edit-fields-wrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		padding: 0;
+	}
+
+	/* 4. Force text alignment on the value itself (iOS specific) */
+	input[type='time']::-webkit-date-and-time-value {
+		text-align: center;
+	}
 </style>
