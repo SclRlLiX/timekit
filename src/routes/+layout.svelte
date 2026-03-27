@@ -35,7 +35,13 @@
 	});
 </script>
 
-<svelte:head><link rel="icon" href={favicon} /></svelte:head>
+<svelte:head>
+	<link rel="icon" href={favicon} />
+	<meta 
+        name="theme-color" 
+        content={isDark ? "#16171d" : "#f4f5f7"} 
+    >
+</svelte:head>
 
 <div>
 	<nav
