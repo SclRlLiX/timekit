@@ -8,6 +8,7 @@
 
 	const resolvedHomePath = resolve('/');
 	const resolvedWorkPath = resolve('/work');
+	const resolvedSleepPath = resolve('/sleep');
 
 	let { children } = $props();
 
@@ -48,7 +49,7 @@
 			<div class="flex items-center gap-8">
 				<a
 					href={resolvedWorkPath}
-					class="text-md transition-colors {page.url.pathname === '/work'
+					class="text-md transition-colors {page.url.pathname === resolvedWorkPath
 						? 'font-bold text-(--color-accent)'
 						: 'font-medium text-(--color-muted) hover:text-(--color-accent-hover)'}"
 				>
@@ -56,8 +57,8 @@
 				</a>
 
 				<a
-					href={resolve('/sleep')}
-					class="text-md transition-colors {page.url.pathname === '/sleep'
+					href={resolvedSleepPath}
+					class="text-md transition-colors {page.url.pathname === resolvedSleepPath
 						? 'font-bold text-(--color-accent)'
 						: 'font-medium text-(--color-muted) hover:text-(--color-accent-hover)'}"
 				>

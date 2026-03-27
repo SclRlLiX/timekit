@@ -3,13 +3,11 @@
 @theme {
 	--font-sans: 'Google Sans', sans-serif;
 	--font-mono: 'JetBrains Mono', monospace;
-
+	
 	--text-h1: 1.75rem;
-
 }
 
 :root {
-
 	--color-main-bg: #f4f5f7;
 	--color-main-text: #1a1b22;
 	--color-surface: #ffffff;
