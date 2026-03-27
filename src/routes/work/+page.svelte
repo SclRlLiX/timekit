@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { fade } from 'svelte/transition';
-
 	import TimeInput from '$lib/components/TimeInput.svelte';
 	import BreakInput from '$lib/components/BreakInput.svelte';
 

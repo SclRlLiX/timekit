@@ -32,18 +32,33 @@
         color-scheme: dark;
     }
 
-    /* 1. Hide the native clock icon that throws off the math */
+    /* 1. Hide the clock icon completely */
     input[type="time"]::-webkit-calendar-picker-indicator {
         display: none;
+        -webkit-appearance: none;
         margin: 0;
     }
 
-    /* 2. Force the inner text wrapper to center perfectly */
+    /* 2. Target the main inner wrapper */
     input[type="time"]::-webkit-datetime-edit {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
-        padding: 0; /* This removes the offset! */
+        padding: 0;
+    }
+
+    /* 3. Target the specific Safari text fields wrapper */
+    input[type="time"]::-webkit-datetime-edit-fields-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0;
+    }
+
+    /* 4. Force text alignment on the value itself (iOS specific) */
+    input[type="time"]::-webkit-date-and-time-value {
+        text-align: center;
     }
 </style>
