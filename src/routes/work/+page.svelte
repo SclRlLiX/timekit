@@ -105,7 +105,6 @@
 	});
 </script>
 
-<h1>Work Page</h1>
 
 <div class="relative flex w-full rounded-xl bg-(--color-surface) p-2">
 	<div class="pointer-events-none absolute inset-1 flex">

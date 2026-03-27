@@ -12,21 +12,22 @@
 
 	let { children } = $props();
 
-	var isDark: boolean = $state(false);
+	let isDark = $state(false);
 	function toggleTheme() {
 		isDark = !isDark;
 		document.documentElement.classList.toggle('dark', isDark);
 	}
 
-	//currently not used 
-	// function applyTheme() {
-	// 	const hour = new Date().getHours();
-	// 	// Dark mode between 8pm and 6am
-	// 	const isDark = hour >= 20 || hour < 6;
-	// 	document.documentElement.classList.toggle('dark', isDark);
-	// }
+	function applyTheme() {
+		const hour = new Date().getHours();
+		// Dark mode between 8pm and 6am
+		 isDark = hour >= 20 || hour < 6;
+		document.documentElement.classList.toggle('dark', isDark);
+	}
 
 	onMount(async () => {
+		applyTheme();
+
 		if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
 			const { registerSW } = await import('virtual:pwa-register');
 			registerSW({ immediate: true });

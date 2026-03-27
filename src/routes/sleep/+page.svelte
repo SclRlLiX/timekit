@@ -9,44 +9,44 @@
 	// Default wake time
 	let wakeTime = $state('07:00');
 
-    // Default bedtime
-    let bedTime = $state("22:30");
+	// Default bedtime
+	let bedTime = $state('22:30');
 
-    // Function to grab the current time and update the input
-    function setSleepNow() {
-        const now = new Date();
-        const h = now.getHours().toString().padStart(2, '0');
-        const m = now.getMinutes().toString().padStart(2, '0');
-        
-        bedTime = `${h}:${m}`;
-    }
+	// Function to grab the current time and update the input
+	function setSleepNow() {
+		const now = new Date();
+		const h = now.getHours().toString().padStart(2, '0');
+		const m = now.getMinutes().toString().padStart(2, '0');
 
-    let wakeTimes = $derived.by(() => {
-        if (!bedTime) return [];
+		bedTime = `${h}:${m}`;
+	}
 
-        const [bedH, bedM] = bedTime.split(':').map(Number);
-        const bedTotalMins = (bedH * 60) + bedM;
+	let wakeTimes = $derived.by(() => {
+		if (!bedTime) return [];
 
-        const cyclesToCalculate = [3, 4, 5, 6]; 
+		const [bedH, bedM] = bedTime.split(':').map(Number);
+		const bedTotalMins = bedH * 60 + bedM;
 
-        return cyclesToCalculate.map(cycles => {
-            const sleepDurationMins = cycles * 90;
-            const timeToFallAsleep = 15;
-            
-            let wakeTotalMins = bedTotalMins + timeToFallAsleep + sleepDurationMins;
-            wakeTotalMins = wakeTotalMins % (24 * 60);
+		const cyclesToCalculate = [3, 4, 5, 6];
 
-            const h = Math.floor(wakeTotalMins / 60);
-            const m = wakeTotalMins % 60;
+		return cyclesToCalculate.map((cycles) => {
+			const sleepDurationMins = cycles * 90;
+			const timeToFallAsleep = 15;
 
-            return {
-                cycles,
-                durationLabel: `${cycles * 1.5} Hours`,
-                timeString: `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`,
-                isOptimal: cycles >= 5 
-            };
-        });
-    });
+			let wakeTotalMins = bedTotalMins + timeToFallAsleep + sleepDurationMins;
+			wakeTotalMins = wakeTotalMins % (24 * 60);
+
+			const h = Math.floor(wakeTotalMins / 60);
+			const m = wakeTotalMins % 60;
+
+			return {
+				cycles,
+				durationLabel: `${cycles * 1.5} Hours`,
+				timeString: `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}`,
+				isOptimal: cycles >= 5
+			};
+		});
+	});
 
 	// Calculate optimal bedtimes based on 90-minute cycles + 15 mins to fall asleep
 	let bedtimes = $derived.by(() => {
@@ -84,7 +84,6 @@
 	});
 </script>
 
-<h1>Sleep Page</h1>
 
 <div class="relative flex w-full rounded-xl bg-(--color-surface) p-2">
 	<div class="pointer-events-none absolute inset-1 flex">
@@ -106,66 +105,75 @@
 
 <div class="grid px-2 py-6">
 	{#key activeTab}
+		<!-- Waketime  -->
+		{#if activeTab === 'Wake Time'}
+			<div class="p-4 sm:p-6 lg:p-8">
+				<div class="mx-auto max-w-md space-y-8">
+					<div class="space-y-3">
+						<TimeInput label="I am going to bed at" id="bed-time" bind:value={bedTime} />
 
-        <!-- Waketime  -->
-        {#if activeTab === 'Wake Time'}
-            <div class="p-4 sm:p-6 lg:p-8">
-    <div class="mx-auto max-w-md space-y-8">
-        
-        <div class="space-y-3">
-            <TimeInput label="I am going to bed at" id="bed-time" bind:value={bedTime} />
-            
-            <button
-                type="button"
-                onclick={setSleepNow}
-                class="
-                    w-full rounded-xl bg-(--color-surface-raised) py-3 text-sm font-medium 
+						<button
+							type="button"
+							onclick={setSleepNow}
+							class="
+                    w-full rounded-xl bg-(--color-surface-raised) py-3 text-sm font-medium
                     text-(--color-main-text) shadow-sm transition-all duration-300
-                    hover:bg-(--color-accent-subtle) hover:text-(--color-accent) 
-                    active:bg-(--color-surface) active:scale-[0.98]
+                    hover:bg-(--color-accent-subtle) hover:text-(--color-accent)
+                    active:scale-[0.98] active:bg-(--color-surface)
                 "
-            >
-                💤 Sleep Now
-            </button>
-        </div>
+						>
+							💤 Sleep Now
+						</button>
+					</div>
 
-        <div class="space-y-4">
-            <h2 class="text-sm font-medium text-(--color-muted) uppercase tracking-wider text-center">
-                Set your alarm for
-            </h2>
+					<div class="space-y-4">
+						<h2
+							class="text-center text-sm font-medium tracking-wider text-(--color-muted) uppercase"
+						>
+							Set your alarm for
+						</h2>
 
-            <div class="grid gap-3">
-                {#each wakeTimes as wake (wake.cycles)}
-                    <div class="
+						<div class="grid gap-3">
+							{#each wakeTimes as wake (wake.cycles)}
+								<div
+									class="
                         flex items-center justify-between rounded-xl border-2 p-4 transition-all
-                        {wake.isOptimal 
-                            ? 'border-(--color-accent) bg-(--color-accent-subtle)' 
-                            : 'border-(--color-surface-raised) bg-(--color-surface)'}
-                    ">
-                        <div class="flex flex-col">
-                            <span class="text-sm font-medium {wake.isOptimal ? 'text-(--color-accent)' : 'text-(--color-muted)'}">
-                                {wake.cycles} Cycles
-                            </span>
-                            <span class="text-xs text-(--color-muted)">
-                                {wake.durationLabel} of sleep
-                            </span>
-                        </div>
-                        
-                        <div class="font-mono text-3xl font-bold {wake.isOptimal ? 'text-(--color-accent)' : 'text-(--color-main-text)'}">
-                            {wake.timeString}
-                        </div>
-                    </div>
-                {/each}
-            </div>
-            
-            <p class="text-xs text-center text-(--color-muted) pt-2">
-                *Calculated using 90-minute sleep cycles, allowing 15 minutes to fall asleep.
-            </p>
-        </div>
+                        {wake.isOptimal
+										? 'border-(--color-accent) bg-(--color-accent-subtle)'
+										: 'border-(--color-surface-raised) bg-(--color-surface)'}
+                    "
+								>
+									<div class="flex flex-col">
+										<span
+											class="text-sm font-medium {wake.isOptimal
+												? 'text-(--color-accent)'
+												: 'text-(--color-muted)'}"
+										>
+											{wake.cycles} Cycles
+										</span>
+										<span class="text-xs text-(--color-muted)">
+											{wake.durationLabel} of sleep
+										</span>
+									</div>
 
-    </div>
-</div>
-        {/if}
+									<div
+										class="font-mono text-3xl font-bold {wake.isOptimal
+											? 'text-(--color-accent)'
+											: 'text-(--color-main-text)'}"
+									>
+										{wake.timeString}
+									</div>
+								</div>
+							{/each}
+						</div>
+
+						<p class="pt-2 text-center text-xs text-(--color-muted)">
+							*Calculated using 90-minute sleep cycles, allowing 15 minutes to fall asleep.
+						</p>
+					</div>
+				</div>
+			</div>
+		{/if}
 
 		<!-- Bedtime  -->
 		{#if activeTab === 'Bedtime'}
@@ -221,7 +229,5 @@
 				</div>
 			</div>
 		{/if}
-
-
 	{/key}
 </div>
