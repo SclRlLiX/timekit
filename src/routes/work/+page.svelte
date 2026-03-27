@@ -194,7 +194,7 @@
 			<div class="will-change-opacity col-start-1 row-start-1">
 				<div class="space-y-10 p-6">
 					<div class="mx-auto max-w-md space-y-6">
-						<TimeInput label="Work Start Time" id="work-end" bind:value={workStartTime} />
+						<TimeInput label="Work Start Time" id="work-start" bind:value={workStartTime} />
 						<BreakInput
 							label="Break Duration (minutes)"
 							id="break-time"

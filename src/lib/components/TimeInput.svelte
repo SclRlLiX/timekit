@@ -32,15 +32,18 @@
         color-scheme: dark;
     }
 
-    /* Target the hidden WebKit wrapper to force centering */
+    /* 1. Hide the native clock icon that throws off the math */
+    input[type="time"]::-webkit-calendar-picker-indicator {
+        display: none;
+        margin: 0;
+    }
+
+    /* 2. Force the inner text wrapper to center perfectly */
     input[type="time"]::-webkit-datetime-edit {
         display: flex;
         justify-content: center;
         align-items: center;
-        /* The clock icon on the right takes up roughly 24px of space.
-           Adding a bit of padding to the left balances the container
-           so the time text appears perfectly centered in the whole box.
-        */
-        padding-left: 1.5rem; 
+        width: 100%;
+        padding: 0; /* This removes the offset! */
     }
 </style>
