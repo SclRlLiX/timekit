@@ -18,8 +18,8 @@ const config = {
 			fallback: '404.html' // Helps with client-side routing
 		}),
 		paths: {
-			// Replace 'your-repo-name' with your actual GitHub repository name
-			base: process.argv.includes('dev') ? '' : '/timekit'
+			// Set this explicitly for both dev and prod
+			base: '/timekit' 
 		}
 	}
 };
