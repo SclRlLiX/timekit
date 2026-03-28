@@ -24,7 +24,7 @@
     
     <div class="
         flex items-center overflow-hidden rounded-xl border-2 py-1
-        border-(--color-surface-raised) bg-(--color-surface) shadow-sm 
+        border-(--color-surface-raised) bg-(--color-surface-raised) shadow-sm 
         transition-all duration-300 ease-in-out 
         focus-within:border-(--color-accent) focus-within:ring-1 focus-within:ring-(--color-accent)
     ">
@@ -32,7 +32,7 @@
         <button 
             type="button" 
             onclick={decrement}
-            class="touch-manipulation flex h-12 w-14 items-center justify-center text-(--color-muted) transition-colors hover:text-(--color-accent) hover:bg-(--color-accent-subtle) active:bg-(--color-surface-raised)"
+            class="touch-manipulation rounded-lg flex h-12 w-14 ml-1 items-center justify-center text-(--color-muted) transition-colors bg-(--color-surface) hover:text-(--color-accent) hover:bg-(--color-accent-subtle) active:bg-(--color-surface-raised)"
             aria-label="Decrease break time"
         >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
@@ -54,7 +54,7 @@
         <button 
             type="button" 
             onclick={increment}
-            class="touch-manipulation flex h-12 w-14 items-center justify-center text-(--color-muted) transition-colors hover:text-(--color-accent) hover:bg-(--color-accent-subtle) active:bg-(--color-surface-raised)"
+            class="touch-manipulation rounded-lg flex h-12 w-14 mr-1 items-center justify-center text-(--color-muted) transition-colors bg-(--color-surface) hover:text-(--color-accent) hover:bg-(--color-accent-subtle) active:bg-(--color-surface-raised)"
             aria-label="Increase break time"
         >
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>

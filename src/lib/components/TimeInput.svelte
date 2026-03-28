@@ -19,7 +19,7 @@
 		bind:value
 		class="
             w-full rounded-xl border-2 border-(--color-surface-raised)
-            bg-(--color-surface) py-3
+            bg-(--color-surface-raised) py-3
             text-(--color-main-text) shadow-sm transition-all
             duration-300 ease-in-out outline-none
             focus:border-(--color-accent) focus:ring-1 focus:ring-(--color-accent)

@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 
 @theme {
-	--font-sans: 'Google Sans', sans-serif;
+	--font-sans: 'Nunito', sans-serif;
 	--font-mono: 'JetBrains Mono', monospace;
 	
 	--text-h1: 1.75rem;

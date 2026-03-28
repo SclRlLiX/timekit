@@ -39,7 +39,7 @@
 
 <div>
 	<nav
-		class="sticky top-0 z-50 w-full border-b border-(--color-surface-raised) bg-(--color-surface) backdrop-blur-md"
+		class="sticky top-0 z-50 w-full border-b border-(--color-surface-raised) bg-(--color-main-bg) backdrop-blur-md"
 	>
 		<div class="mx-auto flex h-16 w-full max-w-3xl items-center justify-between px-4">
 			<a href={resolvedHomePath} class="text-4xl font-bold tracking-tight text-(--color-main-text)">

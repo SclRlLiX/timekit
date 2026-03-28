@@ -8,7 +8,7 @@
 </script>
 
 <div
-	class="flex flex-col items-center justify-center rounded-2xl border-2 border-(--color-surface-raised) bg-(--color-surface) py-8 shadow-sm"
+	class="flex flex-col items-center justify-center rounded-2xl border-2 border-(--color-surface-raised) bg-(--color-surface) py-6 shadow-sm"
 >
 	<h2 class="mb-2 text-sm font-medium tracking-wider text-(--color-muted) uppercase">
 		{label}
