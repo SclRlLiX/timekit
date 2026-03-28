@@ -1,6 +1,7 @@
 <script lang="ts">
 	import TimeInput from '$lib/components/TimeInput.svelte';
 	import BreakInput from '$lib/components/BreakInput.svelte';
+	import WorkTimeResult from '$lib/components/WorkTimeResult.svelte';
 
 	let activeTab = $state('Work Time');
 	const tabs = ['Work Time', 'Work Start', 'Work End'];
@@ -48,7 +49,7 @@
 
 	//Calculate work start time based on end time and work duration
 	let calculatedWorkStart = $derived.by(() => {
-		if (!workEndTime || !workTimeCustom) return '00:00';
+		if (!workEndTime || !workTimeCustom) return { hours: 0, mins: 0 };
 
 		// 1. Convert "HH:MM" into total minutes from midnight
 		const [endH, endM] = workEndTime.split(':').map(Number);
@@ -67,17 +68,15 @@
 
 		let netMins = startTotalMins + breakDuration;
 
-
-		// 4. Convert back to "HH:MM"
-		const startH = Math.floor( netMins / 60);
-		const startM = netMins % 60;
-
-		return `${startH.toString().padStart(2, '0')}:${startM.toString().padStart(2, '0')}`;
+		return {
+			hours: Math.floor(netMins / 60),
+			mins: netMins % 60
+		};
 	});
 
 	//Calculate work start time based on end time and work duration
 	let calculatedWorkEnd = $derived.by(() => {
-		if (!workStartTime || !workTimeCustom) return '00:00';
+		if (!workStartTime || !workTimeCustom) return { hours: 0, mins: 0 };
 
 		// 1. Convert "HH:MM" into total minutes from midnight
 		const [startH, startM] = workStartTime.split(':').map(Number);
@@ -96,15 +95,12 @@
 
 		let netMins = endTotalMins + breakDuration;
 
-
-		// 4. Convert back to "HH:MM"
-		const endH = Math.floor( netMins / 60);
-		const endM = netMins % 60;
-
-		return `${endH.toString().padStart(2, '0')}:${endM.toString().padStart(2, '0')}`;
+		return {
+			hours: Math.floor(netMins / 60),
+			mins: netMins % 60
+		};
 	});
 </script>
-
 
 <div class="relative flex w-full rounded-xl bg-(--color-surface) p-2">
 	<div class="pointer-events-none absolute inset-1 flex">
@@ -126,7 +122,6 @@
 
 <div class="grid px-2 py-6">
 	{#key activeTab}
-
 		<!-- Work Time  -->
 		{#if activeTab === 'Work Time'}
 			<div class="will-change-opacity col-start-1 row-start-1">
@@ -141,19 +136,11 @@
 						<TimeInput label="Work End Time" id="work-end" bind:value={workEndTime} />
 					</div>
 
-					<div
-						class="flex flex-col items-center justify-center rounded-2xl border-2 border-(--color-surface-raised) bg-(--color-surface) py-8 shadow-sm"
-					>
-						<h2 class="mb-2 text-sm font-medium tracking-wider text-(--color-muted) uppercase">
-							Total Work Time
-						</h2>
-						<div class="text-5xl font-bold text-(--color-accent) tabular-nums">
-							{workTime.hours}<span class="mr-3 ml-1 text-2xl text-(--color-main-text)">h</span>
-							{workTime.mins.toString().padStart(2, '0')}<span
-								class="ml-1 text-2xl text-(--color-main-text)">m</span
-							>
-						</div>
-					</div>
+					<WorkTimeResult
+						label="Total work time (hh:mm)"
+						hours={workTime.hours}
+						mins={workTime.mins}
+					></WorkTimeResult>
 				</div>
 			</div>
 		{/if}
@@ -172,16 +159,11 @@
 						<TimeInput label="Work Time" id="work-time" bind:value={workTimeCustom} />
 					</div>
 
-					<div
-						class="flex flex-col items-center justify-center rounded-2xl border-2 border-(--color-surface-raised) bg-(--color-surface) py-8 shadow-sm"
-					>
-						<h2 class="mb-2 text-sm font-medium tracking-wider text-(--color-muted) uppercase">
-							Work Start Time
-						</h2>
-						<div class="text-5xl font-bold text-(--color-accent) tabular-nums">
-							{calculatedWorkStart}
-						</div>
-					</div>
+					<WorkTimeResult
+						label="Work Time Start"
+						hours={calculatedWorkStart.hours}
+						mins={calculatedWorkStart.mins}
+					></WorkTimeResult>
 				</div>
 			</div>
 		{/if}
@@ -200,20 +182,14 @@
 						<TimeInput label="Work Time" id="work-time" bind:value={workTimeCustom} />
 					</div>
 
-					<div
-						class="flex flex-col items-center justify-center rounded-2xl border-2 border-(--color-surface-raised) bg-(--color-surface) py-8 shadow-sm"
-					>
-						<h2 class="mb-2 text-sm font-medium tracking-wider text-(--color-muted) uppercase">
-							Work End Time
-						</h2>
-						<div class="text-5xl font-bold text-(--color-accent) tabular-nums">
-							{calculatedWorkEnd}
-						</div>
-					</div>
+					<WorkTimeResult
+						label="Work Time Start"
+						hours={calculatedWorkEnd.hours}
+						mins={calculatedWorkEnd.mins}
+					></WorkTimeResult>
+
 				</div>
 			</div>
 		{/if}
-
-
 	{/key}
 </div>
