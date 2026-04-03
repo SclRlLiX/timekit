@@ -2,13 +2,9 @@
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.png';
 	import { onMount } from 'svelte';
-	import { resolve } from '$app/paths';
-	import { page } from '$app/state';
 	import { scale } from 'svelte/transition';
+	import {activeSection} from '$lib/activeSection'
 
-	const resolvedHomePath = resolve('/');
-	const resolvedWorkPath = resolve('/work');
-	const resolvedSleepPath = resolve('/sleep');
 
 	let { children } = $props();
 
@@ -42,28 +38,28 @@
 		class="sticky top-0 z-50 w-full border-b border-(--color-surface-raised) bg-(--color-main-bg) backdrop-blur-md"
 	>
 		<div class="mx-auto flex h-16 w-full max-w-3xl items-center justify-between px-4">
-			<a href={resolvedHomePath} class="text-4xl font-bold tracking-tight text-(--color-main-text)">
+			<button onclick={() => activeSection.set('work')} class="text-4xl font-bold tracking-tight text-(--color-main-text)">
 				timekit<span class="text-(--color-accent)">.</span>
-			</a>
+			</button>
 
 			<div class="flex items-center gap-8">
-				<a
-					href={resolvedWorkPath}
-					class="text-md transition-colors {page.url.pathname === resolvedWorkPath
+				<button
+					onclick={() => activeSection.set('work')}
+					class="text-md transition-colors {$activeSection === 'work'
 						? 'font-bold text-(--color-accent)'
 						: 'font-medium text-(--color-muted) hover:text-(--color-accent-hover)'}"
 				>
 					Work
-				</a>
+			</button>
 
-				<a
-					href={resolvedSleepPath}
-					class="text-md transition-colors {page.url.pathname === resolvedSleepPath
+				<button
+					onclick={() => activeSection.set('sleep')}
+					class="text-md transition-colors {$activeSection === 'sleep'
 						? 'font-bold text-(--color-accent)'
 						: 'font-medium text-(--color-muted) hover:text-(--color-accent-hover)'}"
 				>
 					Sleep
-				</a>
+		</button>
 				<button
 					onclick={toggleTheme}
 					class="relative flex h-10 w-10 items-center justify-center rounded-lg text-zinc-500 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"

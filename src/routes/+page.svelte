@@ -1,2 +1,11 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+	import { activeSection } from '$lib/activeSection';
+    import WorkPage from '$lib/components/Pages/WorkPage.svelte'
+    import SleepPage from '$lib/components/Pages/SleepPage.svelte';
+</script>
+
+{#if $activeSection === 'work'}
+	<WorkPage/>
+{:else}
+	<SleepPage/>
+{/if}
