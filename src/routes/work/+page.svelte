@@ -6,7 +6,7 @@
 	import WorkTimeCard from '$lib/components/WorkTimeCard.svelte';
 
 	let activeTab = $state('Work Time');
-	const tabs = ['Work Time', 'Work Start', 'Work End'];
+	const tabs = ['Work Time', 'Work End', 'Work Start'];
 
 	// Time Calculations
 	let workStartTime = $state('07:00');
@@ -127,6 +127,31 @@
 			></WorkTimeResult>
 		{/if}
 
+		<!-- Work End Time  -->
+		{#if activeTab === 'Work End'}
+			<WorkTimeCard>
+				<div class="will-change-opacity col-start-1 row-start-1">
+					<div class="space-y-10 p-6">
+						<div class="mx-auto max-w-md space-y-6">
+							<TimeInput label="Work Start Time" id="work-start" bind:value={workStartTime} />
+							<BreakInput
+								label="Break Duration (minutes)"
+								id="break-time"
+								bind:value={breakDuration}
+							/>
+							<TimeInput label="Work Time" id="work-time" bind:value={workTimeCustom} />
+						</div>
+					</div>
+				</div>
+			</WorkTimeCard>
+
+			<WorkTimeResult
+				label="Work Time End"
+				hours={calculatedWorkEnd.hours}
+				mins={calculatedWorkEnd.mins}
+			></WorkTimeResult>
+		{/if}
+
 		<!-- Work Start -->
 		{#if activeTab === 'Work Start'}
 			<WorkTimeCard>
@@ -149,31 +174,6 @@
 				label="Work Time Start"
 				hours={calculatedWorkStart.hours}
 				mins={calculatedWorkStart.mins}
-			></WorkTimeResult>
-		{/if}
-
-		<!-- Work End Time  -->
-		{#if activeTab === 'Work End'}
-			<WorkTimeCard>
-				<div class="will-change-opacity col-start-1 row-start-1">
-					<div class="space-y-10 p-6">
-						<div class="mx-auto max-w-md space-y-6">
-							<TimeInput label="Work Start Time" id="work-start" bind:value={workStartTime} />
-							<BreakInput
-								label="Break Duration (minutes)"
-								id="break-time"
-								bind:value={breakDuration}
-							/>
-							<TimeInput label="Work Time" id="work-time" bind:value={workTimeCustom} />
-						</div>
-					</div>
-				</div>
-			</WorkTimeCard>
-		
-			<WorkTimeResult
-				label="Work Time Start"
-				hours={calculatedWorkEnd.hours}
-				mins={calculatedWorkEnd.mins}
 			></WorkTimeResult>
 		{/if}
 	{/key}

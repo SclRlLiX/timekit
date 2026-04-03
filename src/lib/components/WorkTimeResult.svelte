@@ -10,7 +10,7 @@
 <div
 	class="flex flex-col items-center justify-center rounded-4xl border border-(--color-accent)/80 bg-(--color-accent-subtle) py-6 drop-shadow-md"
 >
-	<h2 class="mb-2 text-sm font-medium tracking-wider text-(--color-muted) uppercase">
+	<h2 class="mb-2 text-sm font-medium tracking-wider text-(--color-accent)/70 uppercase">
 		{label}
 	</h2>
 	<div class="text-5xl font-bold text-(--color-accent) tabular-nums">

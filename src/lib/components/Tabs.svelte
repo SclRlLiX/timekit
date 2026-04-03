@@ -3,7 +3,7 @@
 
 	let {
 		activeTab = $bindable(''),
-		tabs = ['Work Time', 'Work Start', 'Work End']
+		tabs = ['Work Time', 'Work End', 'Work Start']
 	} = $props();
 
     let activeIndex = $derived(tabs.indexOf(activeTab));
