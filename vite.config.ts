@@ -15,6 +15,8 @@ export default defineConfig({
 			manifest: {
 				name: 'Timekit',
 				short_name: 'Timekit',
+				start_url: '/timekit/',
+				scope: '/timekit/',
 				description: 'Work and Sleep Time Calculator',
 				theme_color: '#2563eb', // Match your --color-accent
 				background_color: '#16171d', // Match your --color-main-bg
