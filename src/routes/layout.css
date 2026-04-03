@@ -14,10 +14,10 @@
 	--color-surface-raised: #eaecf0;
 	--color-muted: #7c8191;
 
-	--color-accent: #2563eb; /* blue-600 — buttons, links, highlights */
-	--color-accent-hover: #1d4ed8; /* blue-700 — hover state */
-	--color-accent-subtle: #dbeafe; /* blue-50  — tinted backgrounds, badges */
-	--color-accent-text: #ffffff; /* text on top of accent-colored elements */
+	--color-accent: #2563eb; 
+	--color-accent-hover: #1d4ed8; 
+	--color-accent-subtle: #dbeafe; 
+	--color-accent-text: #ffffff; 
 }
 
 .dark {
@@ -27,9 +27,9 @@
 	--color-surface-raised: #353945;
 	--color-muted: #7c8191;
 
-	--color-accent: #3b82f6; /* blue-500 — slightly lighter for dark bg contrast */
-	--color-accent-hover: #2563eb; /* blue-600 — hover drops back to the light value */
-	--color-accent-subtle: #1e2a45; /* dark tinted blue — for badges, highlights */
+	--color-accent: #3b82f6; 
+	--color-accent-hover: #2563eb; 
+	--color-accent-subtle: #1e2a45;
 	--color-accent-text: #ffffff;
 }
 
