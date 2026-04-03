@@ -3,34 +3,34 @@
 	import favicon from '$lib/assets/favicon.png';
 	import { onMount } from 'svelte';
 	import { scale } from 'svelte/transition';
-	import {activeSection} from '$lib/activeSection'
-
+	import { activeSection } from '$lib/activeSection';
 
 	let { children } = $props();
 
 	let hour = new Date().getHours();
 	let isDark = $state(hour >= 20 || hour < 6);
-    function toggleTheme() {
-        isDark = !isDark;
-        document.documentElement.classList.toggle('dark', isDark);
-    }
+	function toggleTheme() {
+		isDark = !isDark;
+		document.documentElement.classList.toggle('dark', isDark);
+		const color = isDark ? '#16171d' : '#f4f5f7';
+		document.querySelector('meta[name="theme-color"]')?.setAttribute('content', color);
+	}
 
-    onMount(async () => {
-        document.documentElement.classList.toggle('dark', isDark);
+	onMount(async () => {
+		document.documentElement.classList.toggle('dark', isDark);
+		const color = isDark ? '#16171d' : '#f4f5f7';
+		document.querySelector('meta[name="theme-color"]')?.setAttribute('content', color);
 
-        if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
-            const { registerSW } = await import('virtual:pwa-register');
-            registerSW({ immediate: true });
-        }
-    });
+		if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+			const { registerSW } = await import('virtual:pwa-register');
+			registerSW({ immediate: true });
+		}
+	});
 </script>
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<meta 
-        name="theme-color" 
-        content={isDark ? "#16171d" : "#f4f5f7"} 
-    >
+	<meta name="theme-color" content={isDark ? '#16171d' : '#f4f5f7'} />
 </svelte:head>
 
 <div>
@@ -38,7 +38,10 @@
 		class="sticky top-0 z-50 w-full border-b border-(--color-surface-raised) bg-(--color-main-bg) backdrop-blur-md"
 	>
 		<div class="mx-auto flex h-16 w-full max-w-3xl items-center justify-between px-4">
-			<button onclick={() => activeSection.set('work')} class="text-4xl font-bold tracking-tight text-(--color-main-text)">
+			<button
+				onclick={() => activeSection.set('work')}
+				class="text-4xl font-bold tracking-tight text-(--color-main-text)"
+			>
 				timekit<span class="text-(--color-accent)">.</span>
 			</button>
 
@@ -50,7 +53,7 @@
 						: 'font-medium text-(--color-muted) hover:text-(--color-accent-hover)'}"
 				>
 					Work
-			</button>
+				</button>
 
 				<button
 					onclick={() => activeSection.set('sleep')}
@@ -59,7 +62,7 @@
 						: 'font-medium text-(--color-muted) hover:text-(--color-accent-hover)'}"
 				>
 					Sleep
-		</button>
+				</button>
 				<button
 					onclick={toggleTheme}
 					class="relative flex h-10 w-10 items-center justify-center rounded-lg text-zinc-500 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"

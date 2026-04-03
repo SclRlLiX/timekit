@@ -18,8 +18,8 @@ export default defineConfig({
 				start_url: '/timekit/',
 				scope: '/timekit/',
 				description: 'Work and Sleep Time Calculator',
-				theme_color: '#2563eb', // Match your --color-accent
-				background_color: '#16171d', // Match your --color-main-bg
+				theme_color: '#f4f5f7', // Match your --color-accent
+				background_color: '#f4f5f7', // Match your --color-main-bg
 				display: 'standalone',
 				icons: [
 					{
