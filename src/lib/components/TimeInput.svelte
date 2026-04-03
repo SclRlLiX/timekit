@@ -9,7 +9,7 @@
 </script>
 
 <div class="flex flex-col gap-2">
-	<label for={id} class="text-sm font-medium text-(--color-main-text)">
+	<label for={id}>
 		{label}
 	</label>
 
@@ -18,11 +18,11 @@
 		{id}
 		bind:value
 		class="
-            w-full rounded-xl border border-(--color-surface-raised)
-            bg-(--color-surface-raised) py-3
-            text-(--color-main-text) shadow-sm transition-all
+            w-full rounded-xl border border-(--color-surface-raised)/70
+            bg-(--color-surface-raised)/25 py-3
+            text-(--color-main-text) transition-all
             duration-300 ease-in-out outline-none
-            focus:border-(--color-accent) focus:ring-2 focus:ring-(--color-accent)/50
+            focus:border-(--color-accent)/70 focus:ring-2 focus:ring-(--color-accent)/50
         "
 	/>
 </div>

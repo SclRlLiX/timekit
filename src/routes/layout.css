@@ -55,8 +55,15 @@
 	}
 
 	input{
-		font-size: 1.25rem;
+		font-size: 1.5rem;
 		font-family: var(--font-mono);
+		font-weight: 600;
 		text-align: center;
+	}
+
+	label{
+		font-size: 0.875rem;
+		color: var(--color-muted);
+		text-transform: uppercase
 	}
 }
