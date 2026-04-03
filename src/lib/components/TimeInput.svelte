@@ -18,7 +18,7 @@
 		{id}
 		bind:value
 		class="
-            w-full rounded-xl border border-(--color-surface-raised)/70
+            w-full rounded-2xl border border-(--color-surface-raised)/70
             bg-(--color-surface-raised)/25 py-3
             text-(--color-main-text) transition-all
             duration-300 ease-in-out outline-none

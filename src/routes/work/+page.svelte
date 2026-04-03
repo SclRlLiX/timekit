@@ -3,7 +3,7 @@
 	import BreakInput from '$lib/components/BreakInput.svelte';
 	import WorkTimeResult from '$lib/components/WorkTimeResult.svelte';
 	import Tabs from '$lib/components/Tabs.svelte';
-	import WorkTimeCard from '$lib/components/WorkTimeCard.svelte';
+	import BasicCard from '$lib/components/BasicCard.svelte';
 
 	let activeTab = $state('Work Time');
 	const tabs = ['Work Time', 'Work End', 'Work Start'];
@@ -107,21 +107,11 @@
 	{#key activeTab}
 		<!-- Work Time  -->
 		{#if activeTab === 'Work Time'}
-			<WorkTimeCard>
-				<div class="will-change-opacity col-start-1 row-start-1">
-					<div class="space-y-10 p-6">
-						<div class="mx-auto max-w-md space-y-6">
-							<TimeInput label="Work Start Time" id="work-start" bind:value={workStartTime} />
-							<BreakInput
-								label="Break Duration (minutes)"
-								id="break-time"
-								bind:value={breakDuration}
-							/>
-							<TimeInput label="Work End Time" id="work-end" bind:value={workEndTime} />
-						</div>
-					</div>
-				</div>
-			</WorkTimeCard>
+			<BasicCard>
+				<TimeInput label="Work Start Time" id="work-start" bind:value={workStartTime} />
+				<BreakInput label="Break Duration (minutes)" id="break-time" bind:value={breakDuration} />
+				<TimeInput label="Work End Time" id="work-end" bind:value={workEndTime} />
+			</BasicCard>
 
 			<WorkTimeResult label="Total work time (hh:mm)" hours={workTime.hours} mins={workTime.mins}
 			></WorkTimeResult>
@@ -129,21 +119,11 @@
 
 		<!-- Work End Time  -->
 		{#if activeTab === 'Work End'}
-			<WorkTimeCard>
-				<div class="will-change-opacity col-start-1 row-start-1">
-					<div class="space-y-10 p-6">
-						<div class="mx-auto max-w-md space-y-6">
-							<TimeInput label="Work Start Time" id="work-start" bind:value={workStartTime} />
-							<BreakInput
-								label="Break Duration (minutes)"
-								id="break-time"
-								bind:value={breakDuration}
-							/>
-							<TimeInput label="Work Time" id="work-time" bind:value={workTimeCustom} />
-						</div>
-					</div>
-				</div>
-			</WorkTimeCard>
+			<BasicCard>
+				<TimeInput label="Work Start Time" id="work-start" bind:value={workStartTime} />
+				<BreakInput label="Break Duration (minutes)" id="break-time" bind:value={breakDuration} />
+				<TimeInput label="Work Time" id="work-time" bind:value={workTimeCustom} />
+			</BasicCard>
 
 			<WorkTimeResult
 				label="Work Time End"
@@ -154,21 +134,11 @@
 
 		<!-- Work Start -->
 		{#if activeTab === 'Work Start'}
-			<WorkTimeCard>
-				<div class="will-change-opacity col-start-1 row-start-1">
-					<div class="space-y-10 p-6">
-						<div class="mx-auto max-w-md space-y-6">
-							<TimeInput label="Work End Time" id="work-end" bind:value={workEndTime} />
-							<BreakInput
-								label="Break Duration (minutes)"
-								id="break-time"
-								bind:value={breakDuration}
-							/>
-							<TimeInput label="Work Time" id="work-time" bind:value={workTimeCustom} />
-						</div>
-					</div>
-				</div>
-			</WorkTimeCard>
+			<BasicCard>
+				<TimeInput label="Work End Time" id="work-end" bind:value={workEndTime} />
+				<BreakInput label="Break Duration (minutes)" id="break-time" bind:value={breakDuration} />
+				<TimeInput label="Work Time" id="work-time" bind:value={workTimeCustom} />
+			</BasicCard>
 
 			<WorkTimeResult
 				label="Work Time Start"

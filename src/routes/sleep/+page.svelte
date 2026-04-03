@@ -1,6 +1,7 @@
 <script lang="ts">
 	import TimeInput from '$lib/components/TimeInput.svelte';
 	import Tabs from '$lib/components/Tabs.svelte';
+	import BasicCard from '$lib/components/BasicCard.svelte';
 
 	let activeTab = $state('Wake Time');
 	const tabs = ['Wake Time', 'Bedtime'];
@@ -83,133 +84,122 @@
 	});
 </script>
 
+<Tabs bind:activeTab {tabs}></Tabs>
 
-<Tabs bind:activeTab={activeTab} tabs={tabs}></Tabs>
-
-<div class="grid px-2 py-6">
+<div class="grid py-6">
 	{#key activeTab}
 		<!-- Waketime  -->
 		{#if activeTab === 'Wake Time'}
-			<div class="p-4 sm:p-6 lg:p-8">
-				<div class="mx-auto max-w-md space-y-8">
-					<div class="space-y-3">
-						<TimeInput label="I am going to bed at" id="bed-time" bind:value={bedTime} />
+			<BasicCard>
+				<TimeInput label="I am going to bed at" id="bed-time" bind:value={bedTime} />
 
-						<button
-							type="button"
-							onclick={setSleepNow}
-							class="
-                    w-full rounded-xl bg-(--color-surface-raised) py-3 text-sm font-medium
+				<button
+					type="button"
+					onclick={setSleepNow}
+					class="
+                    w-full rounded-2xl bg-(--color-surface-raised) py-3 text-sm font-medium
                     text-(--color-main-text) shadow-sm transition-all duration-300
                     hover:bg-(--color-accent-subtle) hover:text-(--color-accent)
                     active:scale-[0.98] active:bg-(--color-surface)
                 "
-						>
-							💤 Sleep Now
-						</button>
-					</div>
+				>
+					💤 Sleep Now
+				</button>
+			</BasicCard>
 
-					<div class="space-y-4">
-						<h2
-							class="text-center text-sm font-medium tracking-wider text-(--color-muted) uppercase"
-						>
-							Set your alarm for
-						</h2>
+			<div class="space-y-4">
+				<h2 class="text-center text-sm font-medium tracking-wider text-(--color-muted) uppercase">
+					Set your alarm for
+				</h2>
 
-						<div class="grid gap-3">
-							{#each wakeTimes as wake (wake.cycles)}
-								<div
-									class="
-                        flex items-center justify-between rounded-xl border p-4 transition-all
+				<div class="grid gap-3">
+					{#each wakeTimes as wake (wake.cycles)}
+						<div
+							class="
+                        flex items-center justify-between rounded-2xl border p-4
                         {wake.isOptimal
-										? 'border-(--color-accent) bg-(--color-accent-subtle)'
-										: 'border-(--color-surface-raised) bg-(--color-surface)'}
+								? 'border-(--color-accent) bg-(--color-accent-subtle)'
+								: 'border-(--color-surface-raised) bg-(--color-surface)'}
                     "
+						>
+							<div class="flex flex-col">
+								<span
+									class="text-sm font-medium {wake.isOptimal
+										? 'text-(--color-accent)'
+										: 'text-(--color-muted)'}"
 								>
-									<div class="flex flex-col">
-										<span
-											class="text-sm font-medium {wake.isOptimal
-												? 'text-(--color-accent)'
-												: 'text-(--color-muted)'}"
-										>
-											{wake.cycles} Cycles
-										</span>
-										<span class="text-xs text-(--color-muted)">
-											{wake.durationLabel} of sleep
-										</span>
-									</div>
+									{wake.cycles} Cycles
+								</span>
+								<span class="text-xs text-(--color-muted)">
+									{wake.durationLabel} of sleep
+								</span>
+							</div>
 
-									<div
-										class="font-mono text-3xl font-bold {wake.isOptimal
-											? 'text-(--color-accent)'
-											: 'text-(--color-main-text)'}"
-									>
-										{wake.timeString}
-									</div>
-								</div>
-							{/each}
+							<div
+								class="font-mono text-3xl font-bold {wake.isOptimal
+									? 'text-(--color-accent)'
+									: 'text-(--color-main-text)'}"
+							>
+								{wake.timeString}
+							</div>
 						</div>
-
-						<p class="pt-2 text-center text-xs text-(--color-muted)">
-							*Calculated using 90-minute sleep cycles, allowing 15 minutes to fall asleep.
-						</p>
-					</div>
+					{/each}
 				</div>
+
+				<p class="pt-2 text-center text-xs text-(--color-muted)">
+					*Calculated using 90-minute sleep cycles, allowing 15 minutes to fall asleep.
+				</p>
 			</div>
 		{/if}
 
 		<!-- Bedtime  -->
 		{#if activeTab === 'Bedtime'}
-			<div class="p-4 sm:p-6 lg:p-8">
-				<div class="mx-auto max-w-md space-y-8">
-					<TimeInput label="I want to wake up at" id="wake-time" bind:value={wakeTime} />
+			<BasicCard>
+				<TimeInput label="I want to wake up at" id="wake-time" bind:value={wakeTime} />
+			</BasicCard>
 
-					<div class="space-y-4">
-						<h2
-							class="text-center text-sm font-medium tracking-wider text-(--color-muted) uppercase"
-						>
-							Get into bed at
-						</h2>
+			<div class="space-y-4">
+				<h2 class="text-center text-sm font-medium tracking-wider text-(--color-muted) uppercase">
+					Get into bed at
+				</h2>
 
-						<div class="grid gap-3">
-							{#each bedtimes as bed (bed.cycles)}
-								<div
-									class="
-                                flex items-center justify-between rounded-xl border p-4 transition-all
+				<div class="grid gap-3">
+					{#each bedtimes as bed (bed.cycles)}
+						<div
+							class="
+                                flex items-center justify-between rounded-2xl border p-4 transition-all
                                 {bed.isOptimal
-										? 'border-(--color-accent) bg-(--color-accent-subtle)'
-										: 'border-(--color-surface-raised) bg-(--color-surface)'}
+								? 'border-(--color-accent) bg-(--color-accent-subtle)'
+								: 'border-(--color-surface-raised) bg-(--color-surface)'}
                             "
+						>
+							<div class="flex flex-col">
+								<span
+									class="text-sm font-medium {bed.isOptimal
+										? 'text-(--color-accent)'
+										: 'text-(--color-muted)'}"
 								>
-									<div class="flex flex-col">
-										<span
-											class="text-sm font-medium {bed.isOptimal
-												? 'text-(--color-accent)'
-												: 'text-(--color-muted)'}"
-										>
-											{bed.cycles} Cycles
-										</span>
-										<span class="text-xs text-(--color-muted)">
-											{bed.durationLabel} of sleep
-										</span>
-									</div>
+									{bed.cycles} Cycles
+								</span>
+								<span class="text-xs text-(--color-muted)">
+									{bed.durationLabel} of sleep
+								</span>
+							</div>
 
-									<div
-										class="font-mono text-3xl font-bold {bed.isOptimal
-											? 'text-(--color-accent)'
-											: 'text-(--color-main-text)'}"
-									>
-										{bed.timeString}
-									</div>
-								</div>
-							{/each}
+							<div
+								class="font-mono text-3xl font-bold {bed.isOptimal
+									? 'text-(--color-accent)'
+									: 'text-(--color-main-text)'}"
+							>
+								{bed.timeString}
+							</div>
 						</div>
-
-						<p class="pt-2 text-center text-xs text-(--color-muted)">
-							*Calculated using 90-minute sleep cycles, plus 15 minutes to fall asleep.
-						</p>
-					</div>
+					{/each}
 				</div>
+
+				<p class="pt-2 text-center text-xs text-(--color-muted)">
+					*Calculated using 90-minute sleep cycles, plus 15 minutes to fall asleep.
+				</p>
 			</div>
 		{/if}
 	{/key}

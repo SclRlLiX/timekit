@@ -23,7 +23,7 @@
     </label>
     
     <div class="
-        flex items-center overflow-hidden rounded-xl border py-1
+        flex items-center overflow-hidden rounded-2xl border py-1
         border-(--color-surface-raised)/70 bg-(--color-surface-raised)/25
         transition-all duration-300 ease-in-out 
         focus-within:border-(--color-accent)/70 focus-within:ring-2 focus-within:ring-(--color-accent)/50
