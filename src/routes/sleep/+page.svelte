@@ -120,7 +120,7 @@
 							{#each wakeTimes as wake (wake.cycles)}
 								<div
 									class="
-                        flex items-center justify-between rounded-xl border-2 p-4 transition-all
+                        flex items-center justify-between rounded-xl border p-4 transition-all
                         {wake.isOptimal
 										? 'border-(--color-accent) bg-(--color-accent-subtle)'
 										: 'border-(--color-surface-raised) bg-(--color-surface)'}
@@ -175,7 +175,7 @@
 							{#each bedtimes as bed (bed.cycles)}
 								<div
 									class="
-                                flex items-center justify-between rounded-xl border-2 p-4 transition-all
+                                flex items-center justify-between rounded-xl border p-4 transition-all
                                 {bed.isOptimal
 										? 'border-(--color-accent) bg-(--color-accent-subtle)'
 										: 'border-(--color-surface-raised) bg-(--color-surface)'}

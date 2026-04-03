@@ -23,10 +23,10 @@
     </label>
     
     <div class="
-        flex items-center overflow-hidden rounded-xl border-2 py-1
+        flex items-center overflow-hidden rounded-xl border py-1
         border-(--color-surface-raised) bg-(--color-surface-raised) shadow-sm 
         transition-all duration-300 ease-in-out 
-        focus-within:border-(--color-accent) focus-within:ring-1 focus-within:ring-(--color-accent)
+        focus-within:border-(--color-accent) focus-within:ring-2 focus-within:ring-(--color-accent)/50
     ">
         
         <button 

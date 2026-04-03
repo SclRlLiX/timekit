@@ -103,7 +103,7 @@
 
 <Tabs bind:activeTab {tabs}></Tabs>
 
-<div class="grid px-2 py-6">
+<div class="grid py-6">
 	{#key activeTab}
 		<!-- Work Time  -->
 		{#if activeTab === 'Work Time'}
@@ -129,48 +129,52 @@
 
 		<!-- Work Start -->
 		{#if activeTab === 'Work Start'}
-			<div class="will-change-opacity col-start-1 row-start-1">
-				<div class="space-y-10 p-6">
-					<div class="mx-auto max-w-md space-y-6">
-						<TimeInput label="Work End Time" id="work-end" bind:value={workEndTime} />
-						<BreakInput
-							label="Break Duration (minutes)"
-							id="break-time"
-							bind:value={breakDuration}
-						/>
-						<TimeInput label="Work Time" id="work-time" bind:value={workTimeCustom} />
+			<WorkTimeCard>
+				<div class="will-change-opacity col-start-1 row-start-1">
+					<div class="space-y-10 p-6">
+						<div class="mx-auto max-w-md space-y-6">
+							<TimeInput label="Work End Time" id="work-end" bind:value={workEndTime} />
+							<BreakInput
+								label="Break Duration (minutes)"
+								id="break-time"
+								bind:value={breakDuration}
+							/>
+							<TimeInput label="Work Time" id="work-time" bind:value={workTimeCustom} />
+						</div>
 					</div>
-
-					<WorkTimeResult
-						label="Work Time Start"
-						hours={calculatedWorkStart.hours}
-						mins={calculatedWorkStart.mins}
-					></WorkTimeResult>
 				</div>
-			</div>
+			</WorkTimeCard>
+
+			<WorkTimeResult
+				label="Work Time Start"
+				hours={calculatedWorkStart.hours}
+				mins={calculatedWorkStart.mins}
+			></WorkTimeResult>
 		{/if}
 
 		<!-- Work End Time  -->
 		{#if activeTab === 'Work End'}
-			<div class="will-change-opacity col-start-1 row-start-1">
-				<div class="space-y-10 p-6">
-					<div class="mx-auto max-w-md space-y-6">
-						<TimeInput label="Work Start Time" id="work-start" bind:value={workStartTime} />
-						<BreakInput
-							label="Break Duration (minutes)"
-							id="break-time"
-							bind:value={breakDuration}
-						/>
-						<TimeInput label="Work Time" id="work-time" bind:value={workTimeCustom} />
+			<WorkTimeCard>
+				<div class="will-change-opacity col-start-1 row-start-1">
+					<div class="space-y-10 p-6">
+						<div class="mx-auto max-w-md space-y-6">
+							<TimeInput label="Work Start Time" id="work-start" bind:value={workStartTime} />
+							<BreakInput
+								label="Break Duration (minutes)"
+								id="break-time"
+								bind:value={breakDuration}
+							/>
+							<TimeInput label="Work Time" id="work-time" bind:value={workTimeCustom} />
+						</div>
 					</div>
-
-					<WorkTimeResult
-						label="Work Time Start"
-						hours={calculatedWorkEnd.hours}
-						mins={calculatedWorkEnd.mins}
-					></WorkTimeResult>
 				</div>
-			</div>
+			</WorkTimeCard>
+		
+			<WorkTimeResult
+				label="Work Time Start"
+				hours={calculatedWorkEnd.hours}
+				mins={calculatedWorkEnd.mins}
+			></WorkTimeResult>
 		{/if}
 	{/key}
 </div>

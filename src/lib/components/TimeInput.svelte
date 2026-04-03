@@ -18,11 +18,11 @@
 		{id}
 		bind:value
 		class="
-            w-full rounded-xl border-2 border-(--color-surface-raised)
+            w-full rounded-xl border border-(--color-surface-raised)
             bg-(--color-surface-raised) py-3
             text-(--color-main-text) shadow-sm transition-all
             duration-300 ease-in-out outline-none
-            focus:border-(--color-accent) focus:ring-1 focus:ring-(--color-accent)
+            focus:border-(--color-accent) focus:ring-2 focus:ring-(--color-accent)/50
         "
 	/>
 </div>
