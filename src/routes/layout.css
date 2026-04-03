@@ -23,8 +23,8 @@
 .dark {
 	--color-main-bg: #16171d;
 	--color-main-text: #e2e4e9;
-	--color-surface: #1e2028;
-	--color-surface-raised: #262830;
+	--color-surface: #242731;
+	--color-surface-raised: #353945;
 	--color-muted: #7c8191;
 
 	--color-accent: #3b82f6; /* blue-500 — slightly lighter for dark bg contrast */
