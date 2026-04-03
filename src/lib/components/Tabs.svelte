@@ -14,7 +14,7 @@
 <div class="relative flex w-full rounded-full bg-(--color-surface) p-1 drop-shadow-sm">
 	<div class="pointer-events-none absolute inset-1 flex">
 		<div
-			class="rounded-full bg-(--color-accent-subtle)/70 backdrop-blur-md shadow-sm transition-transform ease-in-out duration-500 will-change-transform"
+			class="rounded-full bg-(--color-accent-subtle)/50 backdrop-blur-md shadow-sm transition-transform ease-in-out duration-500 will-change-transform"
 			style="width: {100 / tabs.length}%; transform: translateX({activeIndex * 100}%);"
 		></div>
 	</div>

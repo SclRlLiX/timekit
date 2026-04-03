@@ -16,7 +16,7 @@
 
 	--color-accent: #2563eb; /* blue-600 — buttons, links, highlights */
 	--color-accent-hover: #1d4ed8; /* blue-700 — hover state */
-	--color-accent-subtle: #eff6ff; /* blue-50  — tinted backgrounds, badges */
+	--color-accent-subtle: #dbeafe; /* blue-50  — tinted backgrounds, badges */
 	--color-accent-text: #ffffff; /* text on top of accent-colored elements */
 }
 

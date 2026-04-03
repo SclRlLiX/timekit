@@ -97,10 +97,10 @@
 					type="button"
 					onclick={setSleepNow}
 					class="
-                    w-full rounded-2xl bg-(--color-surface-raised) py-3 text-sm font-medium
-                    text-(--color-main-text) shadow-sm transition-all duration-300
-                    hover:bg-(--color-accent-subtle) hover:text-(--color-accent)
-                    active:scale-[0.98] active:bg-(--color-surface)
+                    w-full rounded-full bg-(--color-accent-subtle) py-3 text-sm font-medium
+                    text-(--color-main-text) drop-shadow-md transition-transform-in-out duration-300transition-all duration-300
+					border border-(--color-accent)/50
+                    active:scale-[0.98] active:bg-(--color-surface-raised)/50 active:border-(--color-surface-raised)
                 "
 				>
 					💤 Sleep Now
