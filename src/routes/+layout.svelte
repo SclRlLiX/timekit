@@ -64,7 +64,7 @@
 				</button>
 				<button
 					onclick={toggleTheme}
-					class="relative flex h-10 w-10 items-center justify-center rounded-lg text-zinc-500 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
+					class="touch-manipulation relative flex h-10 w-10 items-center justify-center rounded-lg text-zinc-500 transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-800"
 					aria-label="Toggle Theme"
 				>
 					{#if isDark}
