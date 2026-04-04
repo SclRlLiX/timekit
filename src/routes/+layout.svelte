@@ -32,8 +32,8 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-	<!-- <meta name="theme-color" content={themeColor} />
-	<meta name="color-scheme" content={colorScheme} /> -->
+	<!-- <meta name="theme-color" content="{themeColor}" />
+	<meta name="color-scheme" content="{colorScheme}" /> -->
 </svelte:head>
 
 <div>
