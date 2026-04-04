@@ -7,20 +7,20 @@
 
 	let { children } = $props();
 
+	//Apply Theme
 	let hour = new Date().getHours();
 	let isDark = $state(hour >= 20 || hour < 6);
+	let themeColor = $derived(isDark ? '#16171d' : '#f4f5f7');
+
+	$effect(() => {
+        document.documentElement.classList.toggle('dark', isDark);
+    });
+
 	function toggleTheme() {
-		isDark = !isDark;
-		document.documentElement.classList.toggle('dark', isDark);
-		const color = isDark ? '#16171d' : '#f4f5f7';
-		document.querySelector('meta[name="theme-color"]')?.setAttribute('content', color);
-	}
+        isDark = !isDark;
+    }
 
 	onMount(async () => {
-		document.documentElement.classList.toggle('dark', isDark);
-		const color = isDark ? '#16171d' : '#f4f5f7';
-		document.querySelector('meta[name="theme-color"]')?.setAttribute('content', color);
-
 		if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
 			const { registerSW } = await import('virtual:pwa-register');
 			registerSW({ immediate: true });
@@ -30,6 +30,7 @@
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
+	<meta name="theme-color" content={themeColor} />
 </svelte:head>
 
 <div>
