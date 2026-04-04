@@ -23,10 +23,10 @@
     }
 
 	onMount(async () => {
-		// if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
-		// 	const { registerSW } = await import('virtual:pwa-register');
-		// 	registerSW({ immediate: true });
-		// }
+		if (typeof window !== 'undefined' && 'serviceWorker' in navigator) {
+			const { registerSW } = await import('virtual:pwa-register');
+			registerSW({ immediate: true });
+		}
 	});
 </script>
 
