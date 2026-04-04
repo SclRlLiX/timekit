@@ -11,9 +11,11 @@
 	let hour = new Date().getHours();
 	let isDark = $state(hour >= 20 || hour < 6);
 	let themeColor = $derived(isDark ? '#16171d' : '#f4f5f7');
+	let colorScheme = $derived(isDark ? 'dark' : 'light');
 
 	$effect(() => {
         document.documentElement.classList.toggle('dark', isDark);
+		document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';
     });
 
 	function toggleTheme() {
@@ -31,6 +33,7 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 	<meta name="theme-color" content={themeColor} />
+	<meta name="color-scheme" content={colorScheme} />
 </svelte:head>
 
 <div>
