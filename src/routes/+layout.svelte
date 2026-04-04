@@ -38,7 +38,7 @@
 
 <div>
 	<nav
-		class="sticky top-0 z-50 w-full border-b border-(--color-surface-raised) bg-(--color-main-bg) backdrop-blur-md"
+		class="w-full border-b border-(--color-surface-raised) bg-(--color-main-bg) backdrop-blur-md"
 	>
 		<div class="mx-auto flex h-16 w-full max-w-3xl items-center justify-between px-4">
 			<button
